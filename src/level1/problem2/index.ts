@@ -13,7 +13,7 @@ export class ObjectId {
 
     this.data.writeUInt8(type, 0);
     this.data.writeUIntBE(timestamp, 1, 6);
-    ObjectId.randomPart.copy(this.data, 7);
+    this.data.set(ObjectId.randomPart, 7);
     this.data.writeUIntBE(ObjectId.counter, 11, 3);
 
     // bump counter for next id (3 bytes max)
