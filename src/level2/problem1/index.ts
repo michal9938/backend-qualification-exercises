@@ -1,4 +1,5 @@
 export class ExecutionCache<TInputs extends Array<unknown>, TOutput> {
+  // one entry per key - stores the in-flight or finished promise
   private readonly cache = new Map<string, Promise<TOutput>>();
 
   constructor(private readonly handler: (...args: TInputs) => Promise<TOutput>) {}
@@ -6,6 +7,7 @@ export class ExecutionCache<TInputs extends Array<unknown>, TOutput> {
   async fire(key: string, ...args: TInputs): Promise<TOutput> {
     const existing = this.cache.get(key);
     if (existing) {
+      // same key already running or done - reuse it
       return existing;
     }
 
