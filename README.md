@@ -9,3 +9,6 @@ This repository contains the qualification exercises given to aspiring backend e
    - `rogermadjos`
    - `kugtong33`
    - `ccpacillos`
+
+
+   ------------
